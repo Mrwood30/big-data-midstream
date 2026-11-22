@@ -1,0 +1,126 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{array}
+\def\UrlBreaks{\do\/\do-\do.\do_\do=\do?\do\&}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+\title{Aplicaciones de Big Data en el Sector Transporte:\\
+Transporte de Hidrocarburos por Ductos y Operaciones de Bombeo}
+
+\author{\IEEEauthorblockN{Yoander Frank Madera Florez}
+\IEEEauthorblockA{Electiva II: Grandes Volúmenes de Datos\\
+Fundación Universitaria San Mateo\\
+16 de noviembre de 2026}}
+
+\maketitle
+
+\section{Introducción}
+El sector elegido es el transporte, concretamente el transporte de petróleo, gas y derivados por ductos, conocido en la industria como \textit{midstream}. Este segmento mueve los hidrocarburos entre los campos de producción, las refinerías y los mercados mediante miles de kilómetros de tubería y estaciones de bombeo y compresión que operan de forma continua.
+
+La elección se justifica por tres razones. Primero, los operadores de ductos han acumulado grandes volúmenes de datos operativos mucho antes de que existiera el término internet industrial de las cosas \cite{aveva}. Segundo, la analítica de Big Data ha tenido menor adopción en el midstream que en otros segmentos de la industria, lo que lo convierte en un área con gran margen de mejora \cite{spe}. Tercero, el mercado de analítica para el midstream crece con rapidez: se estima en 0,76 mil millones de USD en 2026 y en 2,23 mil millones en 2032 \cite{mordor}.
+
+\section{Desarrollo}
+
+\subsection{Aplicación de las características de Big Data}
+
+\textbf{Volumen.} Un solo operador puede gestionar enormes cantidades de datos. Colonial Pipeline, por ejemplo, analiza con inteligencia artificial los costos energéticos de cerca de 80 estaciones de bombeo distribuidas en 5.500 millas de ductos \cite{colonial}. Cada estación registra de forma continua presión, caudal, vibración y consumo eléctrico, lo que se traduce en años de series temporales almacenadas.
+
+\textbf{Velocidad.} Los sistemas SCADA transmiten presión, caudal y temperatura en tiempo real. Sobre estos flujos, plataformas como la de Flowstate aplican aprendizaje automático para distinguir una fuga de las fluctuaciones normales de operación \cite{flowstate}.
+
+\textbf{Variedad.} Los datos provienen de fuentes heterogéneas: series temporales del SCADA, sensores acústicos distribuidos de fibra óptica (DAS), inspecciones internas con raspatubos inteligentes (PIG) y registros de mantenimiento. SLB integra estas fuentes en un gemelo digital del ducto \cite{slb}.
+
+\textbf{Veracidad.} La diversidad de instrumentos, plataformas de control, proveedores y prácticas de calibración produce datos inconsistentes, lo que limita el valor de la analítica, la automatización y la inteligencia artificial \cite{ogj}. Por ello, la validación y estandarización de datos es un paso previo indispensable.
+
+\textbf{Valor.} En un oleoducto de Eni en Italia, un modelo no supervisado basado solo en señales de presión detectó anomalías en bombas centrífugas varios días antes de la falla \cite{eni}. En pozos de disposición de agua salada, un operador midstream reportó ahorros eléctricos de hasta 30\,\% gracias a la optimización del bombeo con inteligencia artificial \cite{neuralix}.
+
+\subsection{Tecnologías y herramientas}
+
+Las tecnologías de Big Data se organizan según la etapa del ciclo de vida de los datos: almacenamiento, procesamiento, análisis y visualización \cite{sap, openwebinars}. La Tabla~\ref{tab:herramientas} resume las principales y su uso en el transporte por ductos.
+
+\begin{table}[!t]
+\caption{Herramientas de Big Data y su uso en el transporte por ductos}
+\label{tab:herramientas}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\raggedright\arraybackslash}p{1.9cm} >{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.6cm}}
+\toprule
+\textbf{Etapa / herramienta} & \textbf{Función} & \textbf{Uso en ductos} \\
+\midrule
+Hadoop (HDFS) & Almacena datos en bloques distribuidos con tolerancia a fallos & Históricos de años de señales SCADA \\
+NoSQL (MongoDB, Cassandra, HBase) & Datos no estructurados con escalabilidad horizontal & Registros de mantenimiento e inspecciones \\
+BigQuery, Redshift, Snowflake & Almacenes y lagos de datos en la nube & Consolidación corporativa de activos \\
+\midrule
+Apache Spark & Procesamiento en memoria, por lotes y en \textit{streaming} & Entrenamiento de modelos predictivos \\
+Apache Flink y Storm & Procesamiento de flujos en tiempo real & Alertas de fugas y anomalías \\
+\midrule
+Python, R, SQL, Scala & Estadística, \textit{machine learning} y consultas & Modelos de falla de bombas y consumo \\
+\midrule
+Power BI, Tableau, Superset, Looker & Paneles interactivos & Indicadores de eficiencia por estación \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+En almacenamiento, Hadoop HDFS divide los datos en bloques y los reparte entre varios servidores para garantizar tolerancia a fallos \cite{datacamp}, mientras que las bases NoSQL como MongoDB, Cassandra y HBase manejan datos semiestructurados con alta disponibilidad \cite{afi}. En procesamiento, Apache Spark trabaja en memoria y supera a Hadoop en velocidad, y Flink y Storm están orientados al análisis de flujos continuos \cite{afi, openwebinars}. Python y R son el estándar para el análisis estadístico y el aprendizaje automático, y Power BI y Tableau convierten millones de registros en paneles comprensibles \cite{datacamp}.
+
+Estas herramientas generales se complementan con plataformas propias del sector: los historiadores de proceso y sistemas SCADA empresariales (como AVEVA PI System) actúan como fuente única de datos operativos, sobre la que se construyen la simulación hidráulica, la detección de fugas y los gemelos digitales \cite{aveva}.
+
+\section{Justificación}
+El valor del Big Data en el transporte por ductos se refleja tanto en el mercado como en resultados operativos. La analítica de Big Data representa el 23,8\,\% del mercado de analítica para el midstream y las soluciones en la nube el 57,5\,\%, con un crecimiento anual compuesto del 19,7\,\% previsto hasta 2032 \cite{mordor}.
+
+En la operación, los beneficios se concentran en tres áreas. En mantenimiento predictivo, detectar la degradación de una bomba días antes de la falla permite programar la intervención y evitar paradas no planificadas \cite{eni}. En eficiencia energética, el bombeo es uno de los mayores costos operativos, y los casos de Colonial Pipeline y del operador de agua salada muestran ahorros medibles \cite{colonial, neuralix}. En seguridad, la detección de fugas con aprendizaje automático sobre datos SCADA existentes reduce el riesgo ambiental sin instalar nueva instrumentación \cite{flowstate}. Cabe señalar que varias de estas cifras proceden de proveedores tecnológicos, por lo que deben leerse como resultados declarados.
+
+\section{Conclusión}
+El Big Data permite al transporte por ductos pasar de un mantenimiento reactivo a uno predictivo, reducir el consumo energético del bombeo y detectar fugas con mayor rapidez, aprovechando datos que la industria ya generaba. Sus principales desafíos son la calidad desigual de los datos \cite{ogj}, la integración de sistemas heredados y el aumento de la superficie de ataque cibernético al conectar la analítica con los sistemas SCADA \cite{mordor}. A futuro, los gemelos digitales y la inteligencia artificial generativa, cuyo segmento crecería un 22,6\,\% anual \cite{mordor}, apuntan a operaciones de ductos cada vez más autónomas y seguras.
+
+\begin{thebibliography}{99}
+
+\bibitem{aveva}
+AVEVA, ``Intelligent midstream: Elevating pipeline safety and operational excellence,'' libro blanco. [En línea]. Disponible: \url{https://www.aveva.com/content/dam/aveva/documents/white-papers/WhitePaper_AVEVA_Intelligent-Midstream-Digital-Pipelines.pdf.coredownload.inline.pdf}
+
+\bibitem{spe}
+Society of Petroleum Engineers, ``Analytics moves to midstream: AI opportunities away from the wellhead,'' \textit{The Way Ahead}. [En línea]. Disponible: \url{https://pubs.spe.org/en/twa/twa-article-detail/?art=4793}
+
+\bibitem{mordor}
+Mordor Intelligence, ``Midstream oil and gas analytics market size and share,'' 2026. [En línea]. Disponible: \url{https://www.mordorintelligence.com/industry-reports/midstream-oil-and-gas-analytics-market}
+
+\bibitem{colonial}
+Environment + Energy Leader, ``Colonial Pipeline uses Accenture AI to lower electric utility costs.'' [En línea]. Disponible: \url{https://www.environmentenergyleader.com/stories/colonial-pipeline-uses-accenture-ai-to-lower-electric-utility-costs,2922}
+
+\bibitem{flowstate}
+Pipeline \& Gas Journal, ``Flowstate launches leak detection system for gas, CO$_2$ pipelines,'' may. 2026. [En línea]. Disponible: \url{https://pgjonline.com/news/2026/may/flowstate-launches-leak-detection-system-for-gas-co2-pipelines}
+
+\bibitem{slb}
+SLB, ``Enhancing pipeline integrity management with artificial intelligence and integrated technologies,'' artículo técnico, oct. 2026. [En línea]. Disponible: \url{https://www.slb.com/resource-library/technical-paper/di/enhancing-pipeline-integrity-management-with-artificial-intelligence-and-integrated-technologies}
+
+\bibitem{ogj}
+\textit{Oil \& Gas Journal}, ``Better midstream decisions start with better data,'' libro blanco, sep. 2026. [En línea]. Disponible: \url{https://www.ogj.com/white-papers/whitepaper/55406575/better-midstream-decisions-start-with-better-data}
+
+\bibitem{eni}
+``A data-driven pipeline pressure procedure for remote monitoring of centrifugal pumps,'' \textit{Journal of Petroleum Science and Engineering}, 2021. [En línea]. Disponible: \url{https://re.public.polimi.it/bitstream/11311/1189054/1/1-s2.0-S0920410521005064-main.pdf}
+
+\bibitem{neuralix}
+Neuralix Inc., ``Neuralix delivers up to 30\% energy savings in SWD operations through AI-driven pump optimization,'' \textit{Business Wire}, may. 2025. [En línea]. Disponible: \url{https://www.businesswire.com/news/home/20250506781021/en}
+
+\bibitem{sap}
+SAP, ``¿Qué es big data?'' [En línea]. Disponible: \url{https://www.sap.com/latinamerica/resources/what-is-big-data}
+
+\bibitem{openwebinars}
+OpenWebinars, ``Big data: herramientas y técnicas para el análisis de datos.'' [En línea]. Disponible: \url{https://openwebinars.net/blog/big-data-herramientas-y-tecnicas-para-el-analisis-de-datos/}
+
+\bibitem{datacamp}
+V. Singh, ``Tecnologías de big data: herramientas, soluciones y tendencias para 2026,'' DataCamp, ene. 2026. [En línea]. Disponible: \url{https://www.datacamp.com/es/blog/big-data-technologies}
+
+\bibitem{afi}
+Afi Global Education, ``Las 10 herramientas big data más importantes para trabajar con datos,'' oct. 2021. [En línea]. Disponible: \url{https://www.afiglobaleducation.com/post/las-10-herramientas-big-data-mas-importantes}
+
+\end{thebibliography}
+
+\end{document}

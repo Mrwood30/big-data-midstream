@@ -1,0 +1,20 @@
+# Credenciales (nunca se suben)
+*.json.key
+*credentials*.json
+service-account*.json
+.env
+
+# Datos descargados (el notebook los vuelve a bajar del CER)
+datos/
+*.csv
+
+# Archivos temporales
+.ipynb_checkpoints/
+__pycache__/
+*.aux
+*.log
+*.out
+*.synctex.gz
+~$*.docx
+.DS_Store
+Thumbs.db
